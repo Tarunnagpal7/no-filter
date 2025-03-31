@@ -2,11 +2,11 @@ import dbConnect from "@/lib/dbConnect";
 import userModel from "@/model/User";
 import { User } from 'next-auth'
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/options";
+import { authOptions } from "../auth/[...nextauth]/options";
+import mongoose from "mongoose";
 
 export async function DELETE(
-  request: Request,
-  context : {params : Promise<{messageId : string}>}
+  request: Request
 ) {
     await dbConnect();
 
@@ -19,9 +19,19 @@ export async function DELETE(
             { status: 401 }
         );
     }
+    const { searchParams } = new URL(request.url); // Ensure a valid base URL
+    const paramId = searchParams.get('messageId');
 
-    // Properly await the params if they might be a Promise
-    const messageId = (await context.params).messageId;
+    if (!paramId || !mongoose.Types.ObjectId.isValid(paramId)) {
+        return Response.json(
+            { message: 'Message Id not found or already deleted', success: false },
+            { status: 404 }
+        )
+    }
+
+    const messageId = new mongoose.Types.ObjectId(paramId);
+    
+
 
     try {
         const updateResult = await userModel.updateOne(
