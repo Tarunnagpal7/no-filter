@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Loader2, AlertTriangle, UserX, Send, RefreshCw, Heart, MessageSquare } from 'lucide-react';
+import { Loader2, AlertTriangle, UserX, Send, RefreshCw,  MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { CardHeader, CardContent, Card } from '@/components/ui/card';
+import {  CardContent, Card } from '@/components/ui/card';
 import {
   Form,
   FormControl,
