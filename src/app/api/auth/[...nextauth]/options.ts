@@ -3,7 +3,19 @@ import userModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import  CredentialsProvider  from "next-auth/providers/credentials";
+interface UserDocument {
+    _id: string;
+    email: string;
+    username: string;
+    password: string;
+    isVerified: boolean;
+    isAcceptingMessages: boolean;
+  }
 
+interface CredentialsType {
+    identifier: string;
+    password: string;
+  }
 export const authOptions: NextAuthOptions = {
     providers :[
         CredentialsProvider({
@@ -14,7 +26,7 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
 
-            async authorize(credentials : any) : Promise<any> {
+            async authorize(credentials: any) : Promise<any>{
                  await dbConnect();
                 try{
                     const user = await userModel.findOne({

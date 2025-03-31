@@ -72,7 +72,7 @@ export default function SendMessage() {
     const checkUserStatus = async () => {
       setUserStatus(prev => ({ ...prev, isLoading: true }));
       try {
-        const response = await axios.get<ApiResponse>(`/api/check-username?username=${username}`);
+         await axios.get<ApiResponse>(`/api/check-username?username=${username}`);
         
         // User exists and is accepting messages
         setUserStatus({
@@ -235,7 +235,7 @@ export default function SendMessage() {
               Send a Message
             </h1>
             <p className="text-gray-600 max-w-xl mx-auto">
-              Your message will be sent anonymously to @{username}. They won't know who sent it.
+              Your message will be sent anonymously to @{username}. They wont know who sent it.
             </p>
           </div>
           

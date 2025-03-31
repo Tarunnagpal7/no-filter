@@ -8,7 +8,7 @@ import { ApiResponse } from "@/types/ApiResponse"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { acceptMessageSchema } from "@/schemas/acceptMessageSchema"
 import axios, { AxiosError } from "axios"
-import { Loader2, RefreshCcw, Link, Copy, Bell, BellOff } from "lucide-react"
+import { Loader2, RefreshCcw, Link, Copy } from "lucide-react"
 import { User } from 'next-auth'
 import { useSession } from "next-auth/react"
 import React, { useCallback, useEffect, useState } from "react"

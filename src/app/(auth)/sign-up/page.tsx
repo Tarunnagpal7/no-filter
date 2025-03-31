@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-const page = () => {
+const Page = () => {
     const [username,setUsername] = useState('');
     const [usernameMessage,setUsernameMessage] = useState('');
     const [isCheckingUsername,setIsCheckingUsername] = useState(false);
@@ -75,7 +75,7 @@ const page = () => {
           const axiosError = error as AxiosError<ApiResponse>;
     
           // Default error message
-          let errorMessage = axiosError?.response?.data.message || 'There was a problem with your sign-up. Please try again.'
+          const errorMessage = axiosError?.response?.data.message || 'There was a problem with your sign-up. Please try again.'
           
     
           toast.error(errorMessage)
@@ -183,4 +183,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
