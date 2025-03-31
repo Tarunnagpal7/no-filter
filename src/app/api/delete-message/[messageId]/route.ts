@@ -6,7 +6,7 @@ import { authOptions } from "../../auth/[...nextauth]/options";
 
 export async function DELETE(
   request: Request,
-  context: { params: { messageId: string } }
+  context : {params : Promise<{messageId : string}>}
 ) {
     await dbConnect();
 
@@ -21,8 +21,7 @@ export async function DELETE(
     }
 
     // Properly await the params if they might be a Promise
-    const params = await Promise.resolve(context.params);
-    const messageId = params.messageId;
+    const messageId = (await context.params).messageId;
 
     try {
         const updateResult = await userModel.updateOne(
