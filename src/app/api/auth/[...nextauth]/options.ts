@@ -3,19 +3,7 @@ import userModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import  CredentialsProvider  from "next-auth/providers/credentials";
-interface UserDocument {
-    _id: string;
-    email: string;
-    username: string;
-    password: string;
-    isVerified: boolean;
-    isAcceptingMessages: boolean;
-  }
 
-interface CredentialsType {
-    identifier: string;
-    password: string;
-  }
 export const authOptions: NextAuthOptions = {
     providers :[
         CredentialsProvider({
