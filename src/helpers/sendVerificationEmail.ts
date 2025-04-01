@@ -59,7 +59,7 @@ export default async function sendVerificationEmail(
     const emailHtml = createVerificationEmailHTML(username, verifyCode);
 
     // Send the email
-    const info = await transporter.sendMail({
+     await transporter.sendMail({
       from: `"Your Name" <${process.env.SMTP_USER}>`,
       to: email,
       subject: "Welcome to Our Service!",
