@@ -74,4 +74,5 @@ export const authOptions: NextAuthOptions = {
     pages:{
         signIn: "/sign-in",
     },
+    debug: process.env.NODE_ENV === "development"
 }
