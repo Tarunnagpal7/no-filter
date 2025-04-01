@@ -46,6 +46,7 @@ export async function POST(request : Request) {
                 existingUser.password = hashedPassword;
                 existingUser.verifyCode = verifyCode;
                 existingUser.verifyCodeExpire = new Date(Date.now() + 3600000);
+                existingUser.username = username
                 await existingUser.save();
             }
        }else{
