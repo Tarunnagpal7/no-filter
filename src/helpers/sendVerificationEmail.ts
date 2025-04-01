@@ -60,7 +60,7 @@ export default async function sendVerificationEmail(
 
     // Send the email
      await transporter.sendMail({
-      from: `"Your Name" <${process.env.SMTP_USER}>`,
+      from: `NO-FILTER <${process.env.SMTP_USER}>`,
       to: email,
       subject: "Welcome to Our Service!",
       html: emailHtml,
