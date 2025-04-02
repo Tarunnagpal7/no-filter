@@ -50,7 +50,7 @@ export default function UserDashboard() {
     } finally {
       setIsSwitchLoading(false);
     }
-  }, [setValue]);
+  }, []);
 
   const fetchMessages = useCallback(
     async (refresh: boolean = false) => {
@@ -132,8 +132,8 @@ export default function UserDashboard() {
           <Card className="bg-gray-50">
             <CardContent className="pt-6">
               <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                <Link className="h-5 w-5 text-blue-600" />
-                Your Shared Profile Link
+                <Link className="h-5 w-5 text-blue-600 " />
+                Share your link to your friends
               </h2>
               <div className="flex flex-col sm:flex-row gap-2">
                 <div className="relative flex-1">
@@ -165,13 +165,15 @@ export default function UserDashboard() {
 
           {/* Message Settings Section */}
           <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold flex items-center gap-2">
-                
+            <CardContent className="p-3">
+              <div className="md:flex items-center justify-between">
+                <h2 className=" mb-2 flex items-center text-lg font-semibold  gap-2">
                   Message Settings
                 </h2>
                 <div className="flex items-center gap-2">
+                  <span className="mr-2 font-semibold text-sm">
+                  Turn on switch for accepting messages
+                </span>
                   <Switch
                     {...register('acceptMessages')}
                     checked={acceptMessages}
@@ -179,7 +181,6 @@ export default function UserDashboard() {
                     disabled={isSwitchLoading}
                     className={acceptMessages ? "bg-green-600" : ""}
                   />
-                
                 </div>
               </div>
             </CardContent>
